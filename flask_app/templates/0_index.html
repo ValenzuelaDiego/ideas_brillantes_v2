@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesion</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/plantilla.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <h1 class="text-white">Ideas Brillantes</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div>
+            <a class="btn btn-success" href="/registro" role="button">Registrarse</a>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col">
+            <img class="bg" src="static/img1.jpg"/>
+        </div>
+        <div class="col">
+            <h2 class="font-bold text-center py-5">Bienvenido</h2>
+            <form action="/ingresar_usuario" method="post" class="col-6 mx-auto">
+                <div class="form-group">
+                    {% with messages = get_flashed_messages() %}<!-- declara una variable llamada -->
+                        {% if messages %}<!-- comprobar si hay algún mensaje -->
+                            {% for message in messages %}<!-- recorrer los mensajes -->
+                                <div class="alert alert-danger" role="alert">
+                                    <p>{{message}}</p><!-- muestra cada mensaje en una etiqueta de párrafo -->
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <div class="mb-4">
+                        <label for="email_f" class="form-label">Email:</label>
+                        <input type="email" name="email_f"  class="form-control" aria-describedby="passwordHelpBlock">
+                    </div>
+                    <div class="mb-4">
+                        <label for="contrasenha_f" class="form-label">Contraseña:</label>
+                        <input type="password" name="contrasenha_f"  class="form-control" aria-describedby="passwordHelpBlock">
+                    </div>
+                    <div>
+                        <input type="submit" value="Ingresar" class="btn btn-success ">
+                    </div>
+                    <div class="my-3">
+                        <span>Aún no tienes cuenta?<a href="/registro"> Regístarse</a></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+</body>
+</html>
